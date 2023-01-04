@@ -17,7 +17,7 @@ typedef struct
 {
     char* buffer;
     size_t buffer_length; //size_t is an unsigned integral data type
-    ssize_t input_length;
+    size_t input_length;
 
 } InputBuffer;
 
@@ -50,7 +50,7 @@ void read_input(InputBuffer* input_buffer){
 
     we store the return value in input_buffer->input_length.
     */
-    ssize_t bytes_read = getline(&(input_buffer->buffer), &(input_buffer->buffer_length), stdin);
+    size_t bytes_read = getline(&(input_buffer->buffer), &(input_buffer->buffer_length), stdin);
 
     if(bytes_read <= 0){
         printf("Error reading input\n");
@@ -68,7 +68,7 @@ void close_input_buffer(InputBuffer* input_buffer){
     free(input_buffer);
 }
 
-int mian(int argc, char* argv[]){
+int main(int argc, char* argv[]){
     InputBuffer* input_buffer = new_input_buffer();
     while(true){
         print_prompt();
